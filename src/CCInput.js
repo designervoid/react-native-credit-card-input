@@ -77,7 +77,8 @@ export default class CCInput extends Component {
         <View style={[containerStyle]}>
           { !!label && <Text style={[labelStyle]}>{label}</Text>}
           <TextInput ref="input"
-            {...additionalInputProps}
+            // {...additionalInputProps}
+            testID: 'testing-input',
             keyboardType={keyboardType}
             autoCapitalise="words"
             autoCorrect={false}
