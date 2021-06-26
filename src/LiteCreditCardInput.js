@@ -77,6 +77,8 @@ export default class LiteCreditCardInput extends Component {
     validColor: PropTypes.string,
     invalidColor: PropTypes.string,
     placeholderColor: PropTypes.string,
+    
+    iconTestID: PropTypes.string,
 
     additionalInputsProps: PropTypes.objectOf(PropTypes.shape(TextInput.propTypes)),
   };
@@ -91,6 +93,7 @@ export default class LiteCreditCardInput extends Component {
     invalidColor: "red",
     placeholderColor: "gray",
     additionalInputsProps: {},
+    iconTestID: "credit-card-icon-default-id",
   };
 
   componentDidMount = () => this._focus(this.props.focused);
@@ -139,7 +142,7 @@ export default class LiteCreditCardInput extends Component {
   }
 
   render() {
-    const { focused, values: { number }, inputStyle, status: { number: numberStatus } } = this.props;
+    const { focused, values: { number }, inputStyle, status: { number: numberStatus }, iconTestID } = this.props;
     const showRightPart = focused && focused !== "number";
 
     return (
@@ -152,7 +155,7 @@ export default class LiteCreditCardInput extends Component {
             keyboardType="numeric"
             containerStyle={s.numberInput} />
         </View>
-        <TouchableOpacity onPress={showRightPart ? this._focusNumber : this._focusExpiry }>
+        <TouchableOpacity onPress={showRightPart ? this._focusNumber : this._focusExpiry } testID={iconTestID}>
           <Image style={s.icon} source={Icons[this._iconToShow()]} />
         </TouchableOpacity>
         <View style={[
